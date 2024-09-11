@@ -26,11 +26,12 @@ def tea_bags(people: int) -> int:
 
 def treats(people: int) -> int:
     """This function helps find the number of treats based on teas expected."""
-    return int((tea_bags(people)) * 1.5)
+    return int((tea_bags(people=people)) * 1.5)
 
 
 # put 1.5 outside of the tea_bags parentheses because that function uses int
 # then convert the resulting float to an int
+# set people=people, first is parameter from tea_bags second is parameter for treats
 
 
 def cost(tea_count: int, treat_count: int) -> float:
