@@ -51,4 +51,4 @@ def get_weather_report() -> str:
     return weather
 
 
-get_weather_report()
+# get_weather_report()
