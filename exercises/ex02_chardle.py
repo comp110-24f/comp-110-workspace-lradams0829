@@ -7,7 +7,9 @@ def input_word() -> str:
     word: str = input("Enter a 5-character word: ")
     if 5 != len(word):
         print("Error: Word must contain 5 characters.")
-    exit()  # exit() cuts the function off here
+        exit()  # exit() cuts the function off here
+    # else:
+    #  print(word)
     return word
 
 
@@ -15,7 +17,9 @@ def input_letter() -> str:
     letter: str = input("Enter a single character: ")
     if not 1 == len(letter):
         print("Error: Character must be a single character.")
-    exit()  # exit() cuts the function off here
+        exit()  # exit() cuts the function off here
+    # else:
+    # print("Enter a single character " + letter)  #
     return letter
 
 
@@ -40,7 +44,9 @@ def contains_char(word: str, letter: str) -> None:
     if count == 0:
         print("No instances of " + letter + " found in " + word)
     elif count == 1:
-        print("1 instance of " + letter + " found in " + word)
+        print(
+            "1 instance of " + letter + " found in " + word
+        )  # different instance because 1 isn't plural
     else:
         print(
             str(count) + " instances of " + letter + " found in " + word
@@ -48,9 +54,14 @@ def contains_char(word: str, letter: str) -> None:
 
 
 def main() -> None:
-    word: str = input_word
-    letter: str = input_letter
+    contains_char(word=input_word(), letter=input_letter())
 
 
 # how to import code for use in the REPL:
 # from exercises.ex02_chardle import function_name
+# must be done in the REPL before running function
+
+if __name__ == "__main__":
+    main()
+
+# enables running of code in the terminal
