@@ -39,3 +39,5 @@ def display(input_list: list[int]) -> None:
 
 
 display(input_list=game_points)
+print(["Kris", "Kaki", "Alyssa"][1])
+print(game_points[6])
