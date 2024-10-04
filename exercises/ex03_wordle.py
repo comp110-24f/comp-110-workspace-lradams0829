@@ -56,4 +56,32 @@ def emojified(guess: str, secret: str) -> str:
     return tally
 
 
-#
+# empty string needed in order to build one response of emojis on the same line
+# need emoji_index to stop infinite loop because no character limit on function
+# elif assumes contains_char evaluates to True, else assumes False
+
+
+def main(secret: str) -> None:
+    """entrypoint of the program and main game loop"""
+    turn: int = 1
+    while turn <= 6:
+        print(f"=== Turn {turn}/6 ===")
+        guess = input_guess(len(secret))
+        tally = emojified(guess, secret)
+        print(tally)
+        if guess == secret:
+            print(f"You won in {turn}/6 turns!")
+            return
+        turn += 1
+    print("X/6 - Sorry, try again tomorrow!")
+
+
+if __name__ == "__main__":
+    main(secret="codes")
+
+
+# turn starts at 1 instead of 0 because no turn 0 in Wordle
+# use input_guess with new argument secret
+# print tally to get the emoji blocks each time
+# return leaves the function without exiting REPL
+# "if __name__ == '__main__'" allows code to run as module
