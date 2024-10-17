@@ -16,7 +16,12 @@ def find_and_remove_max(input: list[int]) -> int:
     index = 0
     while index < len(input):
         if input[index] == max:
-            input.pop(index)
+            input.pop(index)  # important to use index and not value at index despite ()
         else:
             index += 1
     return max
+
+
+# include if statement at the beginning to account for special case (empty list)
+# max variable stores the highest value throughout the list
+# only raise the index when pop is not happening because pop makes the list smaller
