@@ -3,7 +3,7 @@
 __author__: str = "730750473"
 
 
-from exercises.ex05.utils import only_evens, sum, add_at_index
+from exercises.ex05.utils import only_evens, sub, add_at_index
 import pytest
 
 
@@ -38,21 +38,21 @@ def test_add_at_index_edge_case() -> None:
 def test_sum_low_start() -> None:
     """tests whether start < 0 changes start to 0"""
     cool_list: list[int] = [1, 2, 3, 4, 9, 8, 7]
-    assert sum(cool_list, -3, 4) == [1, 2, 3, 4]
+    assert sub(cool_list, -3, 4) == [1, 2, 3, 4]
 
 
 # end > len(input)
 def test_sum_high_end() -> None:
     """tests whether end > len(input) changes end to len(input)"""
     cool_list: list[int] = [1, 2, 3, 4, 9, 8, 7]
-    assert sum(cool_list, 4, 8) == [9, 8, 7]
+    assert sub(cool_list, 4, 8) == [9, 8, 7]
 
 
 # edge case, len(input) == 0
 def test_sum_edge_case() -> None:
     """tests whether input empty list returns an empty list"""
     not_so_cool_list: list[int] = []
-    assert sum(not_so_cool_list, 0, 2) == []
+    assert sub(not_so_cool_list, 0, 2) == []
 
 
 # list of only odds
