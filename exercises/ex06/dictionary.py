@@ -80,5 +80,8 @@ def update_attendance(attendance: dict[str, list[str]], day: str, student: str) 
     # attendance[day] accesses the list in attendance
     # append adds the student to the list
     # there is no need for a loop because only one student is added at a time
-    attendance[day].append(student)
+    # MAKE SURE TO PREVENT ADDING MUTIPLE INSTANCES OF SAME NAME WITHIN A DAY
+    if student not in attendance[day]:
+        # next line not accessed if student already in attendance list
+        attendance[day].append(student)
     # no return statement, just mutated dictionary
