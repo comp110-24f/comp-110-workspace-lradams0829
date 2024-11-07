@@ -1,15 +1,16 @@
 """File to define River class."""
 
-from ex07.fish import Fish
-from ex07.bear import Bear
+from fish import Fish
+from bear import Bear
+
 
 class River:
-    
-    day: int
-    fish: list[Fish]
-    bears: list[Bear]
-    
-    def __init__(self, num_fish: int, num_bears:int):
+
+    day: int  # day of river's lifecycle that is modeled
+    fish: list[Fish]  # stores fish population
+    bears: list[Bear]  # stores bear population
+
+    def __init__(self, num_fish: int, num_bears: int):
         """New River with num_fish Fish and num_bears Bears"""
         self.day: int = 0
         self.fish: list[Fish] = []
@@ -20,24 +21,52 @@ class River:
         for _ in range(0, num_bears):
             self.bears.append(Bear())
 
-    def check_ages(self):
-        return None
+    def check_ages(self) -> None:
+        surviving_fish: list[Fish] = []
+        for elem in self.fish:  # elem accesses item in list of Fish
+            if elem.age <= 3:
+                # from there, attributes and method definitions can be accessed
+                surviving_fish.append(elem)
+            self.fish = surviving_fish
+        surviving_bears: list[Bear] = []
+        for elem in self.bears:
+            if elem.age <= 5:
+                surviving_bears.append(elem)
+            self.bears = surviving_bears
 
-    def bears_eating(self):
-        return None
-    
-    def check_hunger(self):
-        return None
-        
-    def repopulate_fish(self):
-        return None
-    
-    def repopulate_bears(self):
-        return None
-    
-    def view_river(self):
-        return None
-            
+    def remove_fish(self, amount: int) -> None:
+        if amount > len(self.fish):
+            self.fish = []  # clears pond of fish with no error
+        else:
+            for _ in range(0, amount):  # _ acts as placeholder
+                self.fish.pop(0)  # first element is popped always
+
+    def bears_eating(self) -> None:
+        if len(self.fish) >= 5:  # more efficient with if statement before for loop
+            for elem in self.bears:  # assuming first bear gets the fish
+                self.remove_fish(3)
+                elem.eat(3)
+
+    def check_hunger(self) -> None:
+        surviving_bears: list[Bear] = []
+        for elem in self.bears:
+            if elem.hunger_score >= 0:
+                surviving_bears.append(elem)
+                self.bears = surviving_bears
+
+    def repopulate_fish(self) -> None:
+        for _ in range((len(self.fish) // 2) * 4):
+            self.fish.append(Fish())
+
+    def repopulate_bears(self) -> None:
+        for _ in range((len(self.bears) // 2)):
+            self.bears.append(Bear())
+
+    def view_river(self) -> None:
+        print(f"~~~ Day {self.day}: ~~~")
+        print(f"Fish population: {len(self.fish)}")
+        print(f"Bear population: {len(self.bears)}")
+
     def one_river_day(self):
         """Simulate one day of life in the river"""
         # Increase day by 1
@@ -60,4 +89,12 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
-            
+
+    def one_river_week(self) -> None:
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
+        self.one_river_day()
