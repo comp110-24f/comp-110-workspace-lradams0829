@@ -1,11 +1,16 @@
 """File to define Bear class."""
 
+__author__: str = "730750473"
+
 
 class Bear:
+    """Bear class with attributes age and hunger score"""
+
     age: int
     hunger_score: int
 
     def __init__(self):
+        """initializes Bear class"""
         self.age = 0
         self.hunger_score = 0
 

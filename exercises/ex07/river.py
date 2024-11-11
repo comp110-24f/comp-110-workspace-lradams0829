@@ -1,10 +1,13 @@
 """File to define River class."""
 
+__author__: str = "730750473"
+
 from exercises.ex07.fish import Fish
 from exercises.ex07.bear import Bear
 
 
 class River:
+    """River class with attributes day, fish, and bears"""
 
     day: int  # day of river's lifecycle that is modeled
     fish: list[Fish]  # stores fish population
@@ -49,6 +52,10 @@ class River:
             for elem in self.bears:  # assuming first bear gets the fish
                 self.remove_fish(3)
                 elem.eat(3)
+        else:
+            for elem in self.bears:
+                self.remove_fish(0)
+                elem.eat(0)
 
     def check_hunger(self) -> None:
         """add bears that don't go hungry to surviving list"""
