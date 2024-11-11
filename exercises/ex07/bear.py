@@ -10,8 +10,10 @@ class Bear:
         self.hunger_score = 0
 
     def one_day(self) -> None:
+        """hunger gets 1 worse and age 1 higher every day"""
         self.age += 1
         self.hunger_score -= 1
 
     def eat(self, num_fish: int) -> None:
+        """hunger score increases by number of fish eaten"""
         self.hunger_score += num_fish

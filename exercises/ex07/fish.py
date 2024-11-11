@@ -8,4 +8,5 @@ class Fish:
         self.age = 0
 
     def one_day(self) -> None:
+        """age gets 1 higher every day"""
         self.age += 1

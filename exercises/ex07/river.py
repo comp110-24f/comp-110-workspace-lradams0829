@@ -22,6 +22,7 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self) -> None:
+        """fish and bears added to survival lists if not too old"""
         surviving_fish: list[Fish] = []
         for elem in self.fish:  # elem accesses item in list of Fish
             if elem.age <= 3:
@@ -35,6 +36,7 @@ class River:
             self.bears = surviving_bears
 
     def remove_fish(self, amount: int) -> None:
+        """removes fish from the river"""
         if amount > len(self.fish):
             self.fish = []  # clears pond of fish with no error
         else:
@@ -42,12 +44,14 @@ class River:
                 self.fish.pop(0)  # first element is popped always
 
     def bears_eating(self) -> None:
+        """remove 3 in 5 fish for bear consumption"""
         if len(self.fish) >= 5:  # more efficient with if statement before for loop
             for elem in self.bears:  # assuming first bear gets the fish
                 self.remove_fish(3)
                 elem.eat(3)
 
     def check_hunger(self) -> None:
+        """add bears that don't go hungry to surviving list"""
         surviving_bears: list[Bear] = []
         for elem in self.bears:
             if elem.hunger_score >= 0:
@@ -55,20 +59,24 @@ class River:
                 self.bears = surviving_bears
 
     def repopulate_fish(self) -> None:
+        """every pair of fish has 4 offspring, a single fish cannot reproduce"""
         for _ in range((len(self.fish) // 2) * 4):
+            # floor division returns the quotient but no remainder
             self.fish.append(Fish())
 
     def repopulate_bears(self) -> None:
+        """every pair of bears has 1 offspring, a single bear cannot reproduce"""
         for _ in range((len(self.bears) // 2)):
             self.bears.append(Bear())
 
     def view_river(self) -> None:
+        """implements a nice format during class call"""
         print(f"~~~ Day {self.day}: ~~~")
         print(f"Fish population: {len(self.fish)}")
         print(f"Bear population: {len(self.bears)}")
 
     def one_river_day(self):
-        """Simulate one day of life in the river"""
+        """simulate one day of life in the river"""
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
@@ -91,6 +99,7 @@ class River:
         self.view_river()
 
     def one_river_week(self) -> None:
+        """simulate one week of life in the river"""
         self.one_river_day()
         self.one_river_day()
         self.one_river_day()
