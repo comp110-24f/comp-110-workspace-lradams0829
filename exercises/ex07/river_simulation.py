@@ -1,4 +1,4 @@
-"File to simulate River class."
+"""File to simulate River class."""
 
 __author__: str = "730750473"
 
