@@ -1,15 +1,18 @@
-from __future__ import annotations
-
 """ex08, Linked Lists"""
+
+from __future__ import annotations
 
 __author__: str = "730750473"
 
 
 class Node:
+    """Backbone class definition."""
+
     value: int
     next: Node | None
 
     def __init__(self, value: int, next: Node | None):
+        """Constructor method definition."""
         self.value = value
         self.next = next
 
